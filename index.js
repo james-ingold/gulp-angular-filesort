@@ -34,8 +34,7 @@ module.exports = function angularFilesort() {
     try {
       deps = ngDep(file.contents);
     } catch (err) {
-      this.emit('error', new PluginError(PLUGIN_NAME, 'Error in parsing: "' + file.relative + '", ' + err.message));
-      return;
+      throw new PluginError(PLUGIN_NAME, 'Error in parsing: "' + file.relative + '", ' + err.message);
     }
 
     if (deps.modules) {
